@@ -1,0 +1,52 @@
+Testing CISE HW 2
+
+The largest issue I ran into was keeping my code organized as I worked on it over multiple days.
+Writing plenty of comments, both to remember how the code works, as well as what I still needed to work on, helped tremendously in keeping things orgainzed.
+
+
+Testing Data Validation Output
+1. Testing initial value
+- Value: -1 // test edge case negative number
+	- Passed, error message displayed
+- Value: 0 // test edge case zero
+	- Passed, no error message displayed
+- Value: -100 // test large negative number
+	- Passed, error message displayed
+- Value: 100 // test normal value
+	- Passed, no error message displayed
+	
+2. Testing final value
+- Values: final (150), initial (100) // test normal input
+	- Passed, no error message
+- Values: final (100), initial (100) // test edge case, same initial and final
+	- Passed, no error message
+- Values: final (0), initial(100) // test edge case, zero for final
+	- Passed, error message displayed
+- Values: final (-100), initial (100) // test negative final 
+	- Passed, error message displayed
+- Values: final (-100), initial (0) // test edge case, initial zero
+	- Passed, error message displayed
+- Values: final (0), initial (0) // check edge case, both values zero
+	- Passedd, no error message displayed
+	
+3. Testing name
+- Value: " " // test whitespace characters
+	- Passed, no error message displayed
+- Value: "" // test emptry string
+	- Passed, error message displayed
+- Value: "A B" // test normal first and last name
+	- Passed, no error message displayed
+- Value: "A" // test normal first name only
+	- Passed, no error message displayed
+- Value: "A B C" // test first, middle, last name
+	- Passed, no error message displayed
+	
+4. Testing month
+- Value: 1 // test edge case
+	- Passed, no error message displayed
+- Value: 12 // test edge case
+	- Passed, no error message displayed
+- Value: 0 // test out of bounds lower
+	- Passed, error message displayed
+- Value: 13 // test out of bounds upper
+	- Passed, error message displayed
