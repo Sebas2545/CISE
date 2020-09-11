@@ -45,7 +45,7 @@ General Notes
 - If all elements of a2 appear in a1 in order (not necessarily consecutively), return true
 	- Yes, every set contains the empty set (n2 = 0)
 
-10. int meld(const string a1[], int n1, const string a2[], int n2, string result[], int max);
+10. int meld(const string a1[], int n1, const string a2[], int n2, string result[], int max); DONE/NOT TESTED
 - if both a1 & a2 have elements in nondecreasing order, place the elements of a1 & a2 in result
 such that result is also nondecreasing and return the number of elements placed
 - if the result would overflow result OR a1 and/or a2 are not in nondecreasing order, return -1
@@ -167,11 +167,11 @@ int moveToBack(string a[], int n, int pos) { // Move element @ pos to the back a
 
 
 int meld(const string a1[], int n1, const string a2[], int n2, string result[], int max) { // if both a1 & a2 have elements in nondecreasing order, place the elements of a1 & a2 in result
-    if(helper_check_negative(n1) || n1 == 0) // size error checking                        // such that result is also nondecreasing and return the number of elements placed
+    if(helper_check_negative(n1)) // size error checking                        // such that result is also nondecreasing and return the number of elements placed
 		return -1;
-	if(helper_check_negative(n2) || n2 == 0)
+	if(helper_check_negative(n2))
 		return -1;
-	if(helper_check_negative(max) || max == 0 || n1 + n2 > max)
+	if(helper_check_negative(max) || n1 + n2 > max)
 		return -1;
 	
 	// check that both arrays are nondecreasing
@@ -186,13 +186,14 @@ int meld(const string a1[], int n1, const string a2[], int n2, string result[], 
 	for(int i = 0; i < n1 + n2; ++i) {
 		if(a1[iterator_a1] < a2[iterator_a2]) { // if a1 < a2
 			result[i] = a1[iterator_a1];
-			
+			++iterator_a1;
 		}
-		
-		
-		
+		else { // else a1 >= a2
+			result[i] = a2[iterator_a2];
+			++iterator_a2;	
+		}
 	}
-	
+	return n1 + n2;
 }
 
 /*
@@ -234,11 +235,11 @@ bool helper_check_negative(int n) { // checks if n is negative for bad size argu
 		return true;
 	return false;
 }
-bool helper_check_nondecreasing(int* arr, int n) { // returns true if an array is nondecreasing
 
-	
-	for(int i = 0; i < n; ++i)
-	
-	
+bool helper_check_nondecreasing(int* arr, int n) { // returns true if an array is nondecreasing
+	for(int i = 0; i < n - 1; ++i)
+		if(arr[i] > arr[i + 1] )
+			return false;
+		
 	return true;
 }
