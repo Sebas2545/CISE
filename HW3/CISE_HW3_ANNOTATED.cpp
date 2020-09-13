@@ -78,12 +78,11 @@ int detectDifference(const string a1[], int n1, const string a2[], int n2);
 
 int deleteDups(string a[], int n);
 
-
+bool contains(const string a1[], int n1, const string a2[], int n2);
 
 int meld(const string a1[], int n1, const string a2[], int n2, string result[], int max);
 
 int split(string a[], int n, string splitter);
-
 
 bool helper_check_negative(int n);
 
@@ -201,8 +200,6 @@ int deleteDups(string a[], int n) {
 
 
 }
-
-
 
 bool contains(const string a1[], int n1, const string a2[], int n2) { // check if a1 contains a2
 	if(helper_check_negative(n1) || helper_check_negative(n2))
