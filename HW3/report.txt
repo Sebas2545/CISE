@@ -1,0 +1,37 @@
+Obstacles Faced
+
+The largest obstacle I had to overcome was staying organized while working on multiple computers.
+At first I had a google drive folder to hold my code. However, realized I could set up a github repository, which proved to be much easier.
+Once that was settled, reminding myself to consistently write comments for myself, both explaining how code worked and how I planned to implement the functions helped to keep me organized throughout the week.
+
+Test Cases
+
+int countMatches(const string a[], int n, string target);
+  - Test negative size case
+  - Test zero size case
+  - Test no matches case
+  - Test 1 match case
+  - Test 2 or more match case
+  - Test empty string case
+
+
+
+int detectMatch(const string a[], int n, string target);
+
+bool detectSequence(const string a[], int n, string target, int& begin, int& end);
+
+int detectMin(const string a[], int n);
+
+int moveToBack(string a[], int n, int pos);
+
+int moveToFront(string a[], int n, int pos);
+
+int detectDifference(const string a1[], int n1, const string a2[], int n2);
+
+int deleteDups(string a[], int n);
+
+bool contains(const string a1[], int n1, const string a2[], int n2);
+
+int meld(const string a1[], int n1, const string a2[], int n2, string result[], int max);
+
+int split(string a[], int n, string splitter);

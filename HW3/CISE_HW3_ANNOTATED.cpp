@@ -34,11 +34,11 @@ General Notes
 6. int moveToFront(string a[], int n, int pos); DONE/NOT TESTED
 - As in number 5, moving to the front and right
 
-7. int detectDifference(const string a1[], int n1, const string a2[], int n2);DONE/NOT TESTED
+7. int detectDifference(const string a1[], int n1, const string a2[], int n2); DONE/NOT TESTED
 - Return the position of the first element of a1 & a2 that are NOT equal
 	- If they are equal to the point that one runs out, return the whichever value of n1/n2 that is smaller
 
-8. int deleteDups(string a[], int n);
+8. int deleteDups(string a[], int n); DONE/NOT TESTED
 - Delete any consecutive duplicate elements and return the number of items retained (see ex. for better explaination)
 
 9. bool contains(const string a1[], int n1, const string a2[], int n2); DONE/NOT TESTED
@@ -60,6 +60,9 @@ such that result is also nondecreasing and return the number of elements placed
 
 // START CODE
 #include <string>
+#include <cassert>
+
+using namespace std;
 
 //START PROTOTYPES
 int countMatches(const string a[], int n, string target);
@@ -90,6 +93,15 @@ bool helper_check_nondecreasing(int* arr, int n);
 
 //START MAIN/TESTING
 int main() {
+	string d[9] = {"thor", "romanoff", "danvers", "danvers", "stark", "stark", "stark", "danvers", "danvers"};
+
+	//TESTING countMatches()
+	assert(countMatches(d, 0, "") == -1); // empty array case
+	assert(countMatches(d, -1, "") == -1); // negative size case
+  assert(countMatches(d, 9, "thor") == 1); // single match case
+  assert(countMatches(d, 9, "danvers") == 4); // multiple matches case
+
+
 
 
 
@@ -195,10 +207,17 @@ int detectDifference(const string a1[], int n1, const string a2[], int n2) { // 
 }
 
 int deleteDups(string a[], int n) {
-	
+	if(helper_check_negative(n1))
+		return -1;
 
+	for(int i = n - 1; i > 0; --i) {
+		if(a[i - 1] == a[i]) {
+				moveToBack(a, n, i);
+				--n;
+		}
+	}
 
-
+	return n;
 }
 
 bool contains(const string a1[], int n1, const string a2[], int n2) { // check if a1 contains a2
@@ -206,13 +225,13 @@ bool contains(const string a1[], int n1, const string a2[], int n2) { // check i
 		return false;
 	if(n2 == 0) // every set contains the empty set
 		return true;
-	
-	
+
+
 	int i = 0;
 	int itertor_a2 = 0;
 	for(; i < n1; ++i) {
 		if(iterator_a2 == n2) {
-			return true; 
+			return true;
 		}
 		else if(a1[i] == a2[iterator_a2]) {
 			++iterator_a2;
@@ -221,8 +240,9 @@ bool contains(const string a1[], int n1, const string a2[], int n2) { // check i
 	return false;
 }
 
+
 int meld(const string a1[], int n1, const string a2[], int n2, string result[], int max) { // if both a1 & a2 have elements in nondecreasing order, place the elements of a1 & a2 in result
- 	if(helper_check_negative(n1)) // size error checking                                   // such that result is also nondecreasing and return the number of elements placed
+  if(helper_check_negative(n1)) // size error checking                                   // such that result is also nondecreasing and return the number of elements placed
 		return -1;
 	if(helper_check_negative(n2))
 		return -1;
