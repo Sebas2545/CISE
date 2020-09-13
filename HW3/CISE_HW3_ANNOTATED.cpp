@@ -41,7 +41,7 @@ General Notes
 8. int deleteDups(string a[], int n);
 - Delete any consecutive duplicate elements and return the number of items retained (see ex. for better explaination)
 
-9. bool contains(const string a1[], int n1, const string a2[], int n2);
+9. bool contains(const string a1[], int n1, const string a2[], int n2); DONE/NOT TESTED
 - If all elements of a2 appear in a1 in order (not necessarily consecutively), return true
 	- Yes, every set contains the empty set (n2 = 0)
 
@@ -204,10 +204,28 @@ int deleteDups(string a[], int n) {
 
 
 
-
+bool contains(const string a1[], int n1, const string a2[], int n2) { // check if a1 contains a2
+	if(helper_check_negative(n1) || helper_check_negative(n2))
+		return false;
+	if(n2 == 0) // every set contains the empty set
+		return true;
+	
+	
+	int i = 0;
+	int itertor_a2 = 0;
+	for(; i < n1; ++i) {
+		if(iterator_a2 == n2) {
+			return true; 
+		}
+		else if(a1[i] == a2[iterator_a2]) {
+			++iterator_a2;
+		}
+	}
+	return false;
+}
 
 int meld(const string a1[], int n1, const string a2[], int n2, string result[], int max) { // if both a1 & a2 have elements in nondecreasing order, place the elements of a1 & a2 in result
-  if(helper_check_negative(n1)) // size error checking                                   // such that result is also nondecreasing and return the number of elements placed
+ 	if(helper_check_negative(n1)) // size error checking                                   // such that result is also nondecreasing and return the number of elements placed
 		return -1;
 	if(helper_check_negative(n2))
 		return -1;
