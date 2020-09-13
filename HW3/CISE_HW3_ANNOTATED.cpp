@@ -155,11 +155,15 @@ int detectMin(const string a[], int n) { // Return the index of the smallest str
 }
 
 int moveToBack(string a[], int n, int pos) { // Move element @ pos to the back and return pos
-	if(helper_check_negative(n) || n == 0 || helper_check_negative(pos) || pos == 0) // if n or pos is negative or 0 
+	if(helper_check_negative(n) || n == 0 || helper_check_negative(pos) || pos == 0) // if n or pos is negative or 0
 		return -1; // return -1 (bad argument)
-	
-	
-	
+
+	string temp = a[pos];
+	for(int i = pos; i < n - 1; ++i) // TODO, check the bounds (not sure if i < n - 1 is correct)
+		a[i] = a[i + 1];
+	a[n - 1] = temp;
+
+	return pos;
 }
 
 
